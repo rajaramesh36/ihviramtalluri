@@ -1,0 +1,61 @@
+export enum ResponseCode {
+    Ok = '200'
+}
+
+export class ServiceResponse {
+    Message: string;
+    IsSuccess: boolean;
+}
+
+export class Response<T> {
+    packet: packet<T>;
+}
+
+export class packet<B>
+{
+    private header: Header;
+    private body: B;
+
+    public get Header(): Header {
+        return this.header;
+    }
+
+    public set Header(value: Header) {
+        this.header = value;
+    }
+
+    public get Body(): B {
+        return this.body;
+    }
+
+    public set Body(value: B) {
+        this.body = value;
+    }
+}
+
+export class Header {
+    private responseCode: string;
+    private responseMessage: string;
+
+    public get ResponseCode(): string {
+        return this.responseCode;
+    }
+
+    public set ResponseCode(value: string) {
+        this.responseCode = value;
+    }
+
+    public get ResponseMessage(): string {
+        return this.responseMessage;
+    }
+    public set ResponseMessage(value: string) {
+        this.responseMessage = value;
+    }
+}
+
+export class AlertMessage {
+    icon: string;
+    type: string;
+    msg: string;
+    timeout: number;
+}

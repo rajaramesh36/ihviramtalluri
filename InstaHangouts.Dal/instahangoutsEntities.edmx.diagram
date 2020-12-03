@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e2ed24114b548d4aa4a5af42ed53d62" Name="Diagram1" ZoomLevel="50">
+        <EntityTypeShape EntityType="instahangoutsModel.LogData" Width="0.625" PointX="1.375" PointY="0.5" />
+        <EntityTypeShape EntityType="instahangoutsModel.EventAttendanceAssoc" Width="0.625" PointX="7" PointY="2.375" />
+        <EntityTypeShape EntityType="instahangoutsModel.GroupDetail" Width="0.625" PointX="9.25" PointY="0.625" />
+        <EntityTypeShape EntityType="instahangoutsModel.PlanEvent" Width="0.625" PointX="4.875" PointY="0.75" />
+        <EntityTypeShape EntityType="instahangoutsModel.UserInfo" Width="0.625" PointX="3.125" PointY="0.5" />
+        <AssociationConnector Association="instahangoutsModel.FK_EventAttendanceAssoc_PlanEvent" />
+        <AssociationConnector Association="instahangoutsModel.FK_EventAttendanceAssoc_UserInfo" />
+        <AssociationConnector Association="instahangoutsModel.FK_GroupDetails_UserInfo" />
+        <AssociationConnector Association="instahangoutsModel.FK_PlanEvent_UserInfo" />
+        <EntityTypeShape EntityType="instahangoutsModel.GroupUserAssoc" Width="0.625" PointX="11.5" PointY="1.875" />
+        <AssociationConnector Association="instahangoutsModel.FK_GroupUserAssoc_GroupDetails" />
+        <AssociationConnector Association="instahangoutsModel.FK_GroupUserAssoc_UserInfo" />
+        <EntityTypeShape EntityType="instahangoutsModel.LogsInfo" Width="0.625" PointX="1.625" PointY="6.75" />
+        <EntityTypeShape EntityType="instahangoutsModel.MailTemplate" Width="1.5" PointX="4.375" PointY="6.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

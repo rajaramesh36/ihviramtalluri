@@ -1,0 +1,648 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="instahangoutsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EventAttendanceAssoc">
+          <Key>
+            <PropertyRef Name="EventAttendanceId" />
+          </Key>
+          <Property Name="EventAttendanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="GroupDetails">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupUserAssoc">
+          <Key>
+            <PropertyRef Name="GroupUserId" />
+          </Key>
+          <Property Name="GroupUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ModifiedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="LogData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Application" Type="varchar(max)" />
+          <Property Name="Logged" Type="datetime" />
+          <Property Name="LogLevel" Type="varchar(max)" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="Exception" Type="varchar(max)" />
+          <Property Name="Source" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="LogsInfo">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Level" Type="varchar(max)" Nullable="false" />
+          <Property Name="CallSite" Type="varchar(max)" Nullable="false" />
+          <Property Name="Type" Type="varchar(max)" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="StackTrace" Type="varchar(max)" Nullable="false" />
+          <Property Name="InnerException" Type="varchar(max)" Nullable="false" />
+          <Property Name="AdditionalInfo" Type="varchar(max)" Nullable="false" />
+          <Property Name="LoggedOnDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailTemplate">
+          <Key>
+            <PropertyRef Name="MailID" />
+          </Key>
+          <Property Name="MailID" Type="int" Nullable="false" />
+          <Property Name="MailCode" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="MailSubject" Type="varchar" MaxLength="50" />
+          <Property Name="Template" Type="varchar(max)" />
+          <Property Name="ToWhome" Type="varchar" MaxLength="50" />
+          <Property Name="CcWhome" Type="varchar" MaxLength="50" />
+          <Property Name="BccWhome" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PlanEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventTypeCategory" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="EventType" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="EventName" Type="varchar" MaxLength="1000" />
+          <Property Name="EventDate" Type="datetime" Nullable="false" />
+          <Property Name="EventHostUserId" Type="int" Nullable="false" />
+          <Property Name="WantFood" Type="bit" Nullable="false" />
+          <Property Name="IncludeGames" Type="bit" Nullable="false" />
+          <Property Name="IncludeFood" Type="bit" Nullable="false" />
+          <Property Name="EventDescription" Type="varchar(max)" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="TimeZone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmailId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsFirstLogin" Type="bit" />
+          <Property Name="IsEmailValidated" Type="bit" />
+          <Property Name="Createdon" Type="datetime" />
+          <Property Name="Modifiedon" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifiedBy" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="100" />
+          <Property Name="EventAttender" Type="bit" Nullable="false" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="50" />
+          <Property Name="Address1" Type="varchar" MaxLength="500" />
+          <Property Name="Address2" Type="varchar" MaxLength="500" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="OldEmail" Type="varchar" MaxLength="1000" />
+          <Property Name="OldName" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <Association Name="FK_EventAttendanceAssoc_PlanEvent">
+          <End Role="PlanEvent" Type="Self.PlanEvent" Multiplicity="1" />
+          <End Role="EventAttendanceAssoc" Type="Self.EventAttendanceAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanEvent">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="EventAttendanceAssoc">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventAttendanceAssoc_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EventAttendanceAssoc" Type="Self.EventAttendanceAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="EventAttendanceAssoc">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUserAssoc_GroupDetails">
+          <End Role="GroupDetails" Type="Self.GroupDetails" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUserAssoc" Type="Self.GroupUserAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupDetails">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="GroupUserAssoc">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUserAssoc_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUserAssoc" Type="Self.GroupUserAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="GroupUserAssoc">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanEvent_UserInfo">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlanEvent" Type="Self.PlanEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PlanEvent">
+              <PropertyRef Name="EventHostUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="instahangoutsModelStoreContainer">
+          <EntitySet Name="EventAttendanceAssoc" EntityType="Self.EventAttendanceAssoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupDetails" EntityType="Self.GroupDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUserAssoc" EntityType="Self.GroupUserAssoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogData" EntityType="Self.LogData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogsInfo" EntityType="Self.LogsInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailTemplate" EntityType="Self.MailTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanEvent" EntityType="Self.PlanEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EventAttendanceAssoc_PlanEvent" Association="Self.FK_EventAttendanceAssoc_PlanEvent">
+            <End Role="PlanEvent" EntitySet="PlanEvent" />
+            <End Role="EventAttendanceAssoc" EntitySet="EventAttendanceAssoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventAttendanceAssoc_UserInfo" Association="Self.FK_EventAttendanceAssoc_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="EventAttendanceAssoc" EntitySet="EventAttendanceAssoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUserAssoc_GroupDetails" Association="Self.FK_GroupUserAssoc_GroupDetails">
+            <End Role="GroupDetails" EntitySet="GroupDetails" />
+            <End Role="GroupUserAssoc" EntitySet="GroupUserAssoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUserAssoc_UserInfo" Association="Self.FK_GroupUserAssoc_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="GroupUserAssoc" EntitySet="GroupUserAssoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanEvent_UserInfo" Association="Self.FK_PlanEvent_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="PlanEvent" EntitySet="PlanEvent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="instahangoutsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="instahangoutsEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="SP_WelcomeEvents" ReturnType="Collection(instahangoutsModel.SP_WelcomeEvents_Result)">
+          <Parameter Name="UserId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="LogDatas" EntityType="instahangoutsModel.LogData" />
+          <EntitySet Name="EventAttendanceAssocs" EntityType="instahangoutsModel.EventAttendanceAssoc" />
+          <EntitySet Name="GroupDetails" EntityType="instahangoutsModel.GroupDetail" />
+          <EntitySet Name="PlanEvents" EntityType="instahangoutsModel.PlanEvent" />
+          <EntitySet Name="UserInfoes" EntityType="instahangoutsModel.UserInfo" />
+          <AssociationSet Name="FK_EventAttendanceAssoc_PlanEvent" Association="instahangoutsModel.FK_EventAttendanceAssoc_PlanEvent">
+            <End Role="PlanEvent" EntitySet="PlanEvents" />
+            <End Role="EventAttendanceAssoc" EntitySet="EventAttendanceAssocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventAttendanceAssoc_UserInfo" Association="instahangoutsModel.FK_EventAttendanceAssoc_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="EventAttendanceAssoc" EntitySet="EventAttendanceAssocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupDetails_UserInfo" Association="instahangoutsModel.FK_GroupDetails_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="GroupDetail" EntitySet="GroupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanEvent_UserInfo" Association="instahangoutsModel.FK_PlanEvent_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="PlanEvent" EntitySet="PlanEvents" />
+          </AssociationSet>
+          <EntitySet Name="GroupUserAssocs" EntityType="instahangoutsModel.GroupUserAssoc" />
+          <AssociationSet Name="FK_GroupUserAssoc_GroupDetails" Association="instahangoutsModel.FK_GroupUserAssoc_GroupDetails">
+            <End Role="GroupDetail" EntitySet="GroupDetails" />
+            <End Role="GroupUserAssoc" EntitySet="GroupUserAssocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUserAssoc_UserInfo" Association="instahangoutsModel.FK_GroupUserAssoc_UserInfo">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="GroupUserAssoc" EntitySet="GroupUserAssocs" />
+          </AssociationSet>
+          <EntitySet Name="LogsInfoes" EntityType="instahangoutsModel.LogsInfo" />
+          <EntitySet Name="MailTemplates" EntityType="instahangoutsModel.MailTemplate" />
+          </EntityContainer>
+        <ComplexType Name="SP_WelcomeEvents_Result">
+          <Property Type="Int32" Name="UserId" Nullable="true" />
+          <Property Type="Int32" Name="MyHostedEvents" Nullable="true" />
+          <Property Type="Int32" Name="EventsToAttend" Nullable="true" />
+          <Property Type="Int32" Name="CompletedEvents" Nullable="true" />
+          <Property Type="Int32" Name="InCompletedEvents" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="LogData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Application" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Logged" Type="DateTime" Precision="3" />
+          <Property Name="LogLevel" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Exception" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EventAttendanceAssoc">
+          <Key>
+            <PropertyRef Name="EventAttendanceId" />
+          </Key>
+          <Property Name="EventAttendanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="PlanEvent" Relationship="instahangoutsModel.FK_EventAttendanceAssoc_PlanEvent" FromRole="EventAttendanceAssoc" ToRole="PlanEvent" />
+          <NavigationProperty Name="UserInfo" Relationship="instahangoutsModel.FK_EventAttendanceAssoc_UserInfo" FromRole="EventAttendanceAssoc" ToRole="UserInfo" />
+        </EntityType>
+        <EntityType Name="GroupDetail">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="UserInfo" Relationship="instahangoutsModel.FK_GroupDetails_UserInfo" FromRole="GroupDetail" ToRole="UserInfo" />
+          <NavigationProperty Name="GroupUserAssocs" Relationship="instahangoutsModel.FK_GroupUserAssoc_GroupDetails" FromRole="GroupDetail" ToRole="GroupUserAssoc" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanEvent">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventTypeCategory" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="EventType" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="EventName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="EventDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventHostUserId" Type="Int32" Nullable="false" />
+          <Property Name="WantFood" Type="Boolean" Nullable="false" />
+          <Property Name="IncludeGames" Type="Boolean" Nullable="false" />
+          <Property Name="IncludeFood" Type="Boolean" Nullable="false" />
+          <Property Name="EventDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="EventAttendanceAssocs" Relationship="instahangoutsModel.FK_EventAttendanceAssoc_PlanEvent" FromRole="PlanEvent" ToRole="EventAttendanceAssoc" />
+          <NavigationProperty Name="UserInfo" Relationship="instahangoutsModel.FK_PlanEvent_UserInfo" FromRole="PlanEvent" ToRole="UserInfo" />
+          <Property Name="TimeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFirstLogin" Type="Boolean" />
+          <Property Name="IsEmailValidated" Type="Boolean" />
+          <Property Name="Createdon" Type="DateTime" Precision="3" />
+          <Property Name="Modifiedon" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EventAttendanceAssocs" Relationship="instahangoutsModel.FK_EventAttendanceAssoc_UserInfo" FromRole="UserInfo" ToRole="EventAttendanceAssoc" />
+          <NavigationProperty Name="GroupDetails" Relationship="instahangoutsModel.FK_GroupDetails_UserInfo" FromRole="UserInfo" ToRole="GroupDetail" />
+          <NavigationProperty Name="PlanEvents" Relationship="instahangoutsModel.FK_PlanEvent_UserInfo" FromRole="UserInfo" ToRole="PlanEvent" />
+          <Property Name="EventAttender" Type="Boolean" Nullable="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="GroupUserAssocs" Relationship="instahangoutsModel.FK_GroupUserAssoc_UserInfo" FromRole="UserInfo" ToRole="GroupUserAssoc" />
+          <Property Name="OldEmail" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="OldName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_EventAttendanceAssoc_PlanEvent">
+          <End Type="instahangoutsModel.PlanEvent" Role="PlanEvent" Multiplicity="1" />
+          <End Type="instahangoutsModel.EventAttendanceAssoc" Role="EventAttendanceAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanEvent">
+              <PropertyRef Name="EventId" />
+            </Principal>
+            <Dependent Role="EventAttendanceAssoc">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventAttendanceAssoc_UserInfo">
+          <End Type="instahangoutsModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="instahangoutsModel.EventAttendanceAssoc" Role="EventAttendanceAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="EventAttendanceAssoc">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupDetails_UserInfo">
+          <End Type="instahangoutsModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="instahangoutsModel.GroupDetail" Role="GroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="GroupDetail">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanEvent_UserInfo">
+          <End Type="instahangoutsModel.UserInfo" Role="UserInfo" Multiplicity="1" />
+          <End Type="instahangoutsModel.PlanEvent" Role="PlanEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="PlanEvent">
+              <PropertyRef Name="EventHostUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GroupUserAssoc">
+          <Key>
+            <PropertyRef Name="GroupUserId" />
+          </Key>
+          <Property Name="GroupUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <NavigationProperty Name="GroupDetail" Relationship="instahangoutsModel.FK_GroupUserAssoc_GroupDetails" FromRole="GroupUserAssoc" ToRole="GroupDetail" />
+          <NavigationProperty Name="UserInfo" Relationship="instahangoutsModel.FK_GroupUserAssoc_UserInfo" FromRole="GroupUserAssoc" ToRole="UserInfo" />
+        </EntityType>
+        <Association Name="FK_GroupUserAssoc_GroupDetails">
+          <End Type="instahangoutsModel.GroupDetail" Role="GroupDetail" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="instahangoutsModel.GroupUserAssoc" Role="GroupUserAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GroupDetail">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="GroupUserAssoc">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUserAssoc_UserInfo">
+          <End Type="instahangoutsModel.UserInfo" Role="UserInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="instahangoutsModel.GroupUserAssoc" Role="GroupUserAssoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="GroupUserAssoc">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LogsInfo">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Level" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CallSite" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="StackTrace" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="InnerException" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalInfo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LoggedOnDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="MailTemplate">
+          <Key>
+            <PropertyRef Name="MailID" />
+          </Key>
+          <Property Name="MailID" Type="Int32" Nullable="false" />
+          <Property Name="MailCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MailSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ToWhome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CcWhome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BccWhome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="instahangoutsModelStoreContainer" CdmEntityContainer="instahangoutsEntities">
+          <EntitySetMapping Name="LogDatas">
+            <EntityTypeMapping TypeName="instahangoutsModel.LogData">
+              <MappingFragment StoreEntitySet="LogData">
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="LogLevel" ColumnName="LogLevel" />
+                <ScalarProperty Name="Logged" ColumnName="Logged" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventAttendanceAssocs">
+            <EntityTypeMapping TypeName="instahangoutsModel.EventAttendanceAssoc">
+              <MappingFragment StoreEntitySet="EventAttendanceAssoc">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="EventAttendanceId" ColumnName="EventAttendanceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupDetails">
+            <EntityTypeMapping TypeName="instahangoutsModel.GroupDetail">
+              <MappingFragment StoreEntitySet="GroupDetails">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanEvents">
+            <EntityTypeMapping TypeName="instahangoutsModel.PlanEvent">
+              <MappingFragment StoreEntitySet="PlanEvent">
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="IncludeFood" ColumnName="IncludeFood" />
+                <ScalarProperty Name="IncludeGames" ColumnName="IncludeGames" />
+                <ScalarProperty Name="WantFood" ColumnName="WantFood" />
+                <ScalarProperty Name="EventHostUserId" ColumnName="EventHostUserId" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="EventTypeCategory" ColumnName="EventTypeCategory" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="instahangoutsModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="OldName" ColumnName="OldName" />
+                <ScalarProperty Name="OldEmail" ColumnName="OldEmail" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="EventAttender" ColumnName="EventAttender" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Modifiedon" ColumnName="Modifiedon" />
+                <ScalarProperty Name="Createdon" ColumnName="Createdon" />
+                <ScalarProperty Name="IsEmailValidated" ColumnName="IsEmailValidated" />
+                <ScalarProperty Name="IsFirstLogin" ColumnName="IsFirstLogin" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUserAssocs">
+            <EntityTypeMapping TypeName="instahangoutsModel.GroupUserAssoc">
+              <MappingFragment StoreEntitySet="GroupUserAssoc">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupUserId" ColumnName="GroupUserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogsInfoes">
+            <EntityTypeMapping TypeName="instahangoutsModel.LogsInfo">
+              <MappingFragment StoreEntitySet="LogsInfo">
+                <ScalarProperty Name="LoggedOnDate" ColumnName="LoggedOnDate" />
+                <ScalarProperty Name="AdditionalInfo" ColumnName="AdditionalInfo" />
+                <ScalarProperty Name="InnerException" ColumnName="InnerException" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CallSite" ColumnName="CallSite" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailTemplates">
+            <EntityTypeMapping TypeName="instahangoutsModel.MailTemplate">
+              <MappingFragment StoreEntitySet="MailTemplate">
+                <ScalarProperty Name="BccWhome" ColumnName="BccWhome" />
+                <ScalarProperty Name="CcWhome" ColumnName="CcWhome" />
+                <ScalarProperty Name="ToWhome" ColumnName="ToWhome" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+                <ScalarProperty Name="MailSubject" ColumnName="MailSubject" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MailCode" ColumnName="MailCode" />
+                <ScalarProperty Name="MailID" ColumnName="MailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

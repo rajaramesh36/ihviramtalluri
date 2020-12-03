@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaHangouts.Web", "InstaHangouts.Web\InstaHangouts.Web.csproj", "{795ED42C-0070-49E7-91EB-F34C0A2A96F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaHangouts.Dal", "InstaHangouts.Dal\InstaHangouts.Dal.csproj", "{54B6A762-7D16-4DE2-8552-130ECA22DD3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaHangouts.Models", "InstaHangouts.Models\InstaHangouts.Models.csproj", "{167609F6-6186-438F-B221-50BB1D4828A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaHangouts.Business", "InstaHangouts.Business\InstaHangouts.Business.csproj", "{3692FBA7-D9AF-4876-B0B6-2EF28A109572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaHangouts.Interfaces", "InstaHangouts.Interfaces\InstaHangouts.Interfaces.csproj", "{B8E871ED-D016-4803-B6E9-0BCCCD37DFEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstaHangouts.Common", "InstaHangouts.Common\InstaHangouts.Common.csproj", "{DC185553-7F85-4510-B920-22E469DBACC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{795ED42C-0070-49E7-91EB-F34C0A2A96F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{795ED42C-0070-49E7-91EB-F34C0A2A96F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{795ED42C-0070-49E7-91EB-F34C0A2A96F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{795ED42C-0070-49E7-91EB-F34C0A2A96F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54B6A762-7D16-4DE2-8552-130ECA22DD3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54B6A762-7D16-4DE2-8552-130ECA22DD3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54B6A762-7D16-4DE2-8552-130ECA22DD3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54B6A762-7D16-4DE2-8552-130ECA22DD3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{167609F6-6186-438F-B221-50BB1D4828A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{167609F6-6186-438F-B221-50BB1D4828A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{167609F6-6186-438F-B221-50BB1D4828A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{167609F6-6186-438F-B221-50BB1D4828A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3692FBA7-D9AF-4876-B0B6-2EF28A109572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3692FBA7-D9AF-4876-B0B6-2EF28A109572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3692FBA7-D9AF-4876-B0B6-2EF28A109572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3692FBA7-D9AF-4876-B0B6-2EF28A109572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E871ED-D016-4803-B6E9-0BCCCD37DFEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E871ED-D016-4803-B6E9-0BCCCD37DFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E871ED-D016-4803-B6E9-0BCCCD37DFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E871ED-D016-4803-B6E9-0BCCCD37DFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC185553-7F85-4510-B920-22E469DBACC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC185553-7F85-4510-B920-22E469DBACC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC185553-7F85-4510-B920-22E469DBACC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC185553-7F85-4510-B920-22E469DBACC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {678C8D40-4D6E-4B33-9113-E457D7D9533A}
+	EndGlobalSection
+EndGlobal
